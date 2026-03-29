@@ -1,0 +1,42 @@
+# Rust build and dependency files
+/target/
+**/target/
+Cargo.lock
+
+# Editor and IDE settings
+.idea/
+.vscode/
+*.sw?
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Docker output
+*.pid
+
+# Environment files
+.env
+.env.*
+
+# Compiled binary
+universal-auth-service/uas
+
+# Config files for local use (not .example)
+universal-auth-service/configuration.yaml
+
+# Misc
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# Ignore node_modules just in case, if any frontend bits are added here
+node_modules/
+npm-debug.log
+
+# Ignore test output and coverage
+coverage/

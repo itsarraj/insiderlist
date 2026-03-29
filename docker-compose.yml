@@ -1,0 +1,52 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: insiderlist
+      POSTGRES_PASSWORD: insiderlist
+      POSTGRES_DB: insiderlist
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U insiderlist -d insiderlist']
+      interval: 3s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      RUST_LOG: info
+      APP_APPLICATION_HOST: 0.0.0.0
+      APP_APPLICATION_PORT: 8000
+      APP_DATABASE__HOST: postgres
+      APP_DATABASE__PORT: 5432
+      APP_DATABASE__USERNAME: insiderlist
+      APP_DATABASE__PASSWORD: insiderlist
+      APP_DATABASE__DATABASE_NAME: insiderlist
+      # Optional: Resend (https://resend.com) for welcome email on new signups
+      APP_EMAIL__API_KEY: ${RESEND_API_KEY:-}
+      APP_EMAIL__FROM_EMAIL: ${FROM_EMAIL:-hello@example.com}
+      APP_EMAIL__FROM_NAME: ${FROM_NAME:-InsiderList}
+      APP_EMAIL__PRODUCT_NAME: InsiderList
+      APP_RATE_LIMIT__SUBSCRIBE_REQUESTS_PER_MINUTE: ${SUBSCRIBE_RATE_PER_MIN:-8}
+      APP_RATE_LIMIT__SUBSCRIBE_BURST: ${SUBSCRIBE_BURST:-5}
+    expose:
+      - '8000'
+
+  web:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    ports:
+      - '8080:80'
+    depends_on:
+      - api
+
+volumes:
+  pgdata:

@@ -1,0 +1,23 @@
+# Copy to configuration.yaml or set APP__* environment variables (see docker-compose).
+
+application_host: "0.0.0.0"
+application_port: 8000
+
+database:
+  host: "localhost"
+  port: 5432
+  username: "insiderlist"
+  password: "insiderlist"
+  database_name: "insiderlist"
+
+email:
+  # Resend API key (https://resend.com). Leave empty to skip transactional email.
+  api_key: ""
+  from_email: "hello@yourdomain.com"
+  from_name: "InsiderList"
+  product_name: "InsiderList"
+
+# Per client IP (uses X-Forwarded-For / X-Real-IP when present).
+rate_limit:
+  subscribe_requests_per_minute: 8
+  subscribe_burst: 5

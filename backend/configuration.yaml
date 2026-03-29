@@ -1,0 +1,19 @@
+application_host: "0.0.0.0"
+application_port: 8000
+
+database:
+  host: "localhost"
+  port: 5432
+  username: "cesium"
+  password: ""
+  database_name: "insiderlist"
+
+email:
+  api_key: ""
+  from_email: "hello@example.com"
+  from_name: "InsiderList"
+  product_name: "InsiderList"
+
+rate_limit:
+  subscribe_requests_per_minute: 8
+  subscribe_burst: 5
