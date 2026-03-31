@@ -1,7 +1,7 @@
 # Rust build and dependency files
 /target/
 **/target/
-Cargo.lock
+# Cargo.lock
 
 # Editor and IDE settings
 .idea/

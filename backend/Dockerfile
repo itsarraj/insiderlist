@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=builder /app/target/release/insiderlist /app/insiderlist
+COPY --from=builder /app/migrations /app/migrations
 
 ENV RUST_LOG=info
 EXPOSE 8000

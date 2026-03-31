@@ -2,7 +2,8 @@
 
 FROM node:22-bookworm-slim AS build
 WORKDIR /app
-COPY package.json package-lock.json* ./
+# Keep npm installs reproducible by requiring the lockfile.
+COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
