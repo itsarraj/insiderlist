@@ -285,6 +285,13 @@ Deploy to any static host - the pre-rendered HTML gives you excellent SEO:
 - **Cloudflare Pages** - `npm run build:seo`
 - **GitHub Pages** - `npm run build:seo`
 
+### VPS (Docker + nginx + HTTPS)
+
+For this repository's VPS deployment runbook and command reference, see:
+
+- `docs/VPS_DEPLOYMENT.md`
+- `docs/VPS_COMMANDS_REFERENCE.md`
+
 ### SEO Performance Comparison
 
 | Method | SEO Score | Speed | Complexity |

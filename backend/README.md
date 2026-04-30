@@ -19,3 +19,8 @@ Optional transactional email uses [Resend](https://resend.com); leave `email.api
 ## Docker
 
 Use the repository root `docker-compose.yml` (builds API + static UI + Postgres).
+
+## VPS deployment docs
+
+- Full guide: `docs/VPS_DEPLOYMENT.md`
+- Command quick reference: `docs/VPS_COMMANDS_REFERENCE.md`
